@@ -104,6 +104,7 @@ const Navigation = (props: Props) => {
   return (
     <Drawer {...props}>
       <VerticalNavHeader {...props} />
+
       <StyledBoxForShadow
         ref={shadowRef}
         sx={{

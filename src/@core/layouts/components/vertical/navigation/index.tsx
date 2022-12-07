@@ -114,6 +114,7 @@ const Navigation = (props: Props) => {
           )} 95%,${hexToRGBA(theme.palette.background.default, 0.05)})`
         }}
       />
+
       <Box sx={{ height: '100%', position: 'relative', overflow: 'hidden' }}>
         {/* @ts-ignore */}
         <ScrollWrapper
@@ -146,6 +147,7 @@ const Navigation = (props: Props) => {
           </Box>
         </ScrollWrapper>
       </Box>
+
       {afterVerticalNavMenuContent ? afterVerticalNavMenuContent(props) : null}
     </Drawer>
   )

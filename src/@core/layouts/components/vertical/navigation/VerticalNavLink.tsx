@@ -39,8 +39,7 @@ const MenuNavLink = styled(ListItemButton)<
   ListItemButtonProps & { component?: ElementType; target?: '_blank' | undefined }
 >(({ theme }) => ({
   width: '100%',
-  borderTopRightRadius: 100,
-  borderBottomRightRadius: 100,
+  borderRadius: 10,
   color: theme.palette.text.primary,
   padding: theme.spacing(2.25, 3.5),
   transition: 'opacity .25s ease-in-out',
@@ -81,11 +80,11 @@ const VerticalNavLink = ({ item, navVisible, toggleNavVisibility }: Props) => {
       disablePadding
       className='nav-link'
       disabled={item.disabled || false}
-      sx={{ mt: 1.5, px: '0 !important' }}
+      sx={{ mt: 1.5, ml: 2, px: '0 !important' }}
     >
-      <Link passHref href={item.path === undefined ? '/' : `${item.path}`}>
+      <Link style={{ textDecoration: 'none', width: '100%' }} href={item.path === undefined ? '/' : `${item.path}`}>
         <MenuNavLink
-          component={'a'}
+          component={'div'}
           className={isNavLinkActive() ? 'active' : ''}
           {...(item.openInNewTab ? { target: '_blank' } : null)}
           onClick={e => {
@@ -114,6 +113,8 @@ const VerticalNavLink = ({ item, navVisible, toggleNavVisibility }: Props) => {
 
           <MenuItemTextMetaWrapper>
             <Typography {...(themeConfig.menuTextTruncate && { noWrap: true })}>{item.title}</Typography>
+
+            {/* badge */}
             {item.badgeContent ? (
               <Chip
                 label={item.badgeContent}

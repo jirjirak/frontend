@@ -63,7 +63,9 @@ const Sidebar: FC<SidebarProps> = () => {
         >
           <Box sx={{ display: 'flex', gap: 3, alignItems: 'center' }}>
             <TaskAltIcon color='success' />
-            <Typography>Doctop</Typography>
+            <Typography sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+              Doctop <Typography variant='body2'>( http )</Typography>
+            </Typography>
           </Box>
 
           <Typography variant='body2'>77 day</Typography>

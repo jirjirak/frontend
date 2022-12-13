@@ -69,7 +69,8 @@ const Drawer = (props: Props) => {
       sx={{
         width: navWidth,
         '& .MuiDrawer-paper': {
-          borderRight: 0,
+          borderRight: 1,
+          borderColor: 'divider',
           backgroundColor: theme.palette.background.default
         }
       }}

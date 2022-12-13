@@ -23,6 +23,7 @@ import ScrollToTop from 'src/@core/components/scroll-to-top'
 
 // ** Styled Component
 import DatePickerWrapper from 'src/@core/styles/libs/react-datepicker'
+import Sidebar from 'src/components/Sidebar'
 
 const VerticalLayoutWrapper = styled('div')({
   height: '100%',
@@ -100,6 +101,12 @@ const VerticalLayout = (props: LayoutProps) => {
             <Box id='react-datepicker-portal'></Box>
           </DatePickerWrapper>
         </MainContentWrapper>
+
+        {/*  */}
+
+        <Sidebar />
+
+        {/*  */}
       </VerticalLayoutWrapper>
 
       {/* Scroll to top button */}

@@ -48,6 +48,7 @@
 		"@emotion/react": "^11.10.5",
 		"@emotion/server": "^11.10.0",
 		"@emotion/styled": "^11.10.5",
+		"@mui/icons-material": "^5.10.16",
 		"@mui/lab": "^5.0.0-alpha.111",
 		"@mui/material": "^5.10.17",
 		"@popperjs/core": "^2.11.6",
@@ -64,7 +65,7 @@
 		"react-popper": "^2.3.0"
 	},
 	"devDependencies": {
-		"@types/node": "18.11.11",
+		"@types/node": "18.11.13",
 		"@types/nprogress": "^0.2.0",
 		"@types/react": "18.0.26",
 		"@types/react-datepicker": "^4.8.0",

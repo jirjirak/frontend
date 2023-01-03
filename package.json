@@ -52,6 +52,7 @@
 		"@mui/lab": "^5.0.0-alpha.111",
 		"@mui/material": "^5.10.17",
 		"@popperjs/core": "^2.11.6",
+		"apexcharts": "^3.36.3",
 		"apexcharts-clevision": "3.28.5",
 		"clsx": "^1.2.1",
 		"mdi-material-ui": "^7.6.0",

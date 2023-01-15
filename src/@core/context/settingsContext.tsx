@@ -1,5 +1,5 @@
 // ** React Imports
-import { createContext, useState, ReactNode } from 'react'
+import { createContext, useState, ReactNode, Dispatch, SetStateAction } from 'react'
 
 // ** MUI Imports
 import { PaletteMode } from '@mui/material'
@@ -19,6 +19,8 @@ export type Settings = {
 export type SettingsContextValue = {
   settings: Settings
   saveSettings: (updatedSettings: Settings) => void
+  sideBarIsOpen: boolean
+  setSideBarIsOpen: Dispatch<SetStateAction<boolean>>
 }
 
 const initialSettings: Settings = {
@@ -30,18 +32,25 @@ const initialSettings: Settings = {
 // ** Create Context
 export const SettingsContext = createContext<SettingsContextValue>({
   saveSettings: () => null,
-  settings: initialSettings
+  settings: initialSettings,
+  sideBarIsOpen: false,
+  setSideBarIsOpen: () => null
 })
 
 export const SettingsProvider = ({ children }: { children: ReactNode }) => {
   // ** State
   const [settings, setSettings] = useState<Settings>({ ...initialSettings })
+  const [sideBarIsOpen, setSideBarIsOpen] = useState(false)
 
   const saveSettings = (updatedSettings: Settings) => {
     setSettings(updatedSettings)
   }
 
-  return <SettingsContext.Provider value={{ settings, saveSettings }}>{children}</SettingsContext.Provider>
+  return (
+    <SettingsContext.Provider value={{ settings, saveSettings, sideBarIsOpen, setSideBarIsOpen }}>
+      {children}
+    </SettingsContext.Provider>
+  )
 }
 
 export const SettingsConsumer = SettingsContext.Consumer

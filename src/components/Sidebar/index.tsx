@@ -1,8 +1,10 @@
-import { Box, IconButton, SwipeableDrawer, TextField, useTheme } from '@mui/material'
-import { FC, useState } from 'react'
+import { FC } from 'react'
+import { Box, Divider, IconButton, SwipeableDrawer, TextField, Typography, useTheme } from '@mui/material'
 
 import SearchIcon from '@mui/icons-material/Search'
 import MonitorCard from 'src/components/Sidebar/MonitorCard'
+import CancelSharpIcon from '@mui/icons-material/CancelSharp'
+import { useSettings } from 'src/@core/hooks/useSettings'
 
 interface SidebarProps {}
 
@@ -10,18 +12,19 @@ const Sidebar: FC<SidebarProps> = () => {
   const theme = useTheme()
   const sidebarWidth = 500
 
-  const [open, setOpen] = useState(false)
+  const { sideBarIsOpen, setSideBarIsOpen } = useSettings()
+
+  const sideBarVariant = theme.breakpoints.up('md') ? 'persistent' : 'temporary'
 
   return (
     <>
       <SwipeableDrawer
-        keepMounted
         className='layout-vertical-nav'
         anchor='right'
-        variant={false ? 'temporary' : 'permanent'}
-        open={open}
-        onOpen={() => setOpen(true)}
-        onClose={() => setOpen(false)}
+        variant={sideBarVariant}
+        open={sideBarIsOpen || sideBarVariant === 'persistent'}
+        onOpen={() => setSideBarIsOpen(true)}
+        onClose={() => setSideBarIsOpen(false)}
         PaperProps={{
           sx: {
             p: 4,
@@ -42,8 +45,20 @@ const Sidebar: FC<SidebarProps> = () => {
         }}
       >
         {/* header */}
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <IconButton color='error' onClick={() => setSideBarIsOpen(false)}>
+            <CancelSharpIcon />
+          </IconButton>
+
+          <Typography variant='button' sx={{ fontWeight: 700 }}>
+            Monitors
+          </Typography>
+        </Box>
+
+        <Divider sx={{ my: 4 }} />
+
         <Box sx={{ mb: 4, display: 'flex', alignItems: 'center' }}>
-          <TextField fullWidth label='search' />
+          <TextField size='small' fullWidth label='search' />
 
           <IconButton sx={{ ml: 2 }}>
             <SearchIcon />

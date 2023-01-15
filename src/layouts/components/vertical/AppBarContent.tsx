@@ -14,6 +14,8 @@ import { Settings } from 'src/@core/context/settingsContext'
 import ModeToggler from 'src/@core/layouts/components/shared-components/ModeToggler'
 import UserDropdown from 'src/@core/layouts/components/shared-components/UserDropdown'
 import NotificationDropdown from 'src/@core/layouts/components/shared-components/NotificationDropdown'
+import MonitorIcon from '@mui/icons-material/Monitor'
+import { useSettings } from 'src/@core/hooks/useSettings'
 
 interface Props {
   hidden: boolean
@@ -29,6 +31,8 @@ const AppBarContent = (props: Props) => {
   // ** Hook
   const hiddenSm = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
 
+  const { setSideBarIsOpen } = useSettings()
+
   return (
     <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
       <Box className='actions-left' sx={{ mr: 2, display: 'flex', alignItems: 'center' }}>
@@ -41,12 +45,17 @@ const AppBarContent = (props: Props) => {
             <Menu />
           </IconButton>
         ) : null}
+
+        <UserDropdown />
+        <NotificationDropdown />
       </Box>
 
       <Box className='actions-right' sx={{ display: 'flex', alignItems: 'center' }}>
         <ModeToggler settings={settings} saveSettings={saveSettings} />
-        <NotificationDropdown />
-        <UserDropdown />
+
+        <IconButton onClick={() => setSideBarIsOpen(prev => !prev)}>
+          <MonitorIcon />
+        </IconButton>
       </Box>
     </Box>
   )
